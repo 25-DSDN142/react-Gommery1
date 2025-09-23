@@ -67,6 +67,11 @@ function drawInteraction(faces, hands) {
     noStroke()
     fill(225, 225, 0);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
+    
+
+
+
+
 
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
 
