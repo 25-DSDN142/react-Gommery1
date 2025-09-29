@@ -61,6 +61,10 @@ function drawInteraction(faces, hands) {
 
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
+
+    let Catears, Mouseears;
+    let isCat = true;
+    let lastGesture = "";
     /*
     Start drawing on the face here
     */
@@ -68,6 +72,9 @@ function drawInteraction(faces, hands) {
     fill(225, 225, 0);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
     
+    function prepareInteraction(){
+      Mouseears = loadImage
+    }
 
 
 
