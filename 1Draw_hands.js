@@ -17,6 +17,7 @@ function drawInteraction(faces, hands) {
     // This is how to load in the x and y of a point on the hand.
     let indexFingerTipX = hand.index_finger_tip.x;
     let indexFingerTipY = hand.index_finger_tip.y;
+    let mouse
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -24,10 +25,13 @@ function drawInteraction(faces, hands) {
     /*
     Start drawing on the hands here
     */
+function prepareInteraction() {
+  let mouse = loadImage('Mouse.png');
 
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
-
+  for(let 1=0; i<3; i++){
+    
+  }
+}
     // drawPoints(hand)
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
