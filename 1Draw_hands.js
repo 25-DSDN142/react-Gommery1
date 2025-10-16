@@ -19,7 +19,7 @@
    // let indexFingerTipY = hand.index_finger_tip.y;
     let mice = [];
     let mouseImg;
-    let catEarsImg;
+    //let catEarsImg;
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -30,7 +30,7 @@
    
 function prepareInteraction() {
 mouseImg = loadImage('Mouse.png');
-catEarsImg = loadImage('CatEars.png');
+//catEarsImg = loadImage('CatEars.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -91,17 +91,18 @@ function drawInteraction(faces, hands) {
     }
   }
 
-  for (let i = 0; i < faces.length; i++) {
-    let face = faces[i];
-  let faceCenterX = face.faceOval.centerX;
-  let faceTopY = face.faceOval.centerY - face.faceOval.height / 2;
+ //for (let i = 0; i < faces.length; i++) {
+  //  let face = faces[i];
+ // let faceCenterX = face.faceOval.centerX;
+ // let faceTopY = face.faceOval.centerY - face.faceOval.height / 2;
 
-  let earsWidth = face.faceOval.width * 1.2;
-  let earsHeight = (earsWidth / 512) * 273;
+  //let earsWidth = face.faceOval.width * 1.2;
+ // let earsHeight = (earsWidth / 512) * 273;
 
-  image(catEarsImg, faceCenterX - earsWidth / 2, faceTopY - earsHeight / 2, earsWidth, earsHeight);
-  }
+  //image(catEarsImg, faceCenterX - earsWidth / 2, faceTopY - earsHeight / 2, earsWidth, earsHeight);
+  //}
 
+  rectangle(50, 50, 50, 50);
 
 }
     // drawPoints(hand)
