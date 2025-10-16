@@ -102,7 +102,7 @@ function drawInteraction(faces, hands) {
   //image(catEarsImg, faceCenterX - earsWidth / 2, faceTopY - earsHeight / 2, earsWidth, earsHeight);
   //}
 
-  rectangle(50, 50, 50, 50);
+  
 
 }
     // drawPoints(hand)
