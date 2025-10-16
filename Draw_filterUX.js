@@ -6,9 +6,10 @@ let leftHorn;
 let angel = true;
 
 function prepareInteraction() {
-  halo = loadImage('/images/Gemini_halo.png');
-  rightHorn = loadImage('/images/Gemini_horn1.png');
-  leftHorn = loadImage('/images/Gemini_horn2.png');
+  halo = loadImage('/Mouse ears.png');
+  rightHorn = loadImage('/CatearRight.png');
+  leftHorn = loadImage('/CatearLeft.png');
+
 }
 
 function drawInteraction(faces, hands) {
@@ -71,11 +72,11 @@ function drawInteraction(faces, hands) {
     let faceCenterY = face.faceOval.centerY;
 
 
-    let hornWidth = faceWidth / 3;
+    let hornWidth = faceWidth / 2;
     let hornHeight = faceheight;
 
     let hornXOffset = faceWidth * 0.6;
-    let hornYOffset = faceheight * 1.5;
+    let hornYOffset = faceheight;
 
     if (angel) {
       image(halo, face.keypoints[103].x, face.keypoints[103].y - 200)

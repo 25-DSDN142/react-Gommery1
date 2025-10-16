@@ -64,7 +64,7 @@ function drawInteraction(faces, hands) {
 
     let Catears, Mouseears;
     let isCat = true;
-    let lastGesture = "";
+  
     /*
     Start drawing on the face here
     */
@@ -73,7 +73,8 @@ function drawInteraction(faces, hands) {
     // fill(get(leftEyeCenterX, leftEyeCenterY))
     
     function prepareInteraction(){
-      Mouseears = loadImage
+      Mouseears = loadImage('/Mouse ears.png');
+      
     }
 
 
