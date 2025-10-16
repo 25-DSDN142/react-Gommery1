@@ -21,6 +21,7 @@
     let mouseImg;
     //let catEarsImg;
     let score = 0;
+    let pawcat
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -32,6 +33,7 @@
 function prepareInteraction() {
 mouseImg = loadImage('Mouse.png');
 //catEarsImg = loadImage('CatEars.png');
+pawcat = loadImage('catpaw.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -53,12 +55,19 @@ function drawInteraction(faces, hands) {
   if(hands.length > 0) {
     indexFingerX = hands[0].index_finger_tip.x;
     indexFingerY = hands[0].index_finger_tip.y;
+    
+    //Red dot to know where finger is
     fill(255, 0, 0);
   noStroke();
   circle(indexFingerX, indexFingerY, 20);
 
-  }
+  let pawWidth = 80;
+  let pawHeight = 80;
 
+  image(catpaw, indexFingerX - p)
+
+  }
+// Random spawn
   for(let m of mice) {
     if(!m.visible && millis() > m.respawnTime){
       m.visible = true;
@@ -71,6 +80,7 @@ function drawInteraction(faces, hands) {
     m.x += m.speedX;
     m.y += m.speedY;
 
+// loop stuff
     if (m.x > width) m.x = 0;
     if (m.x < 0) m.x = width;
     if (m.y > height) m.y = 0;
@@ -80,6 +90,7 @@ function drawInteraction(faces, hands) {
     if(m.visible){
       image(m.img, m.x, m.y, 100, 210);
     }
+    // The distance and radius of the force that makes mice dissapear
     let d = dist(indexFingerX, indexFingerY, m.x + 60, m.y + 125);
     if(d < 100 && m.visible){
       m.visible = false;
