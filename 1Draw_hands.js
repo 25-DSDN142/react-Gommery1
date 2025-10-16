@@ -1,24 +1,24 @@
 // ----=  HANDS  =----
 /* load images here */
-function prepareInteraction() {
-  let mouseImg = loadImage('Mouse.png');
+//function prepareInteraction() {
   //bgImage = loadImage('/images/background.png');
-}
+//}
 
-function drawInteraction(hands) {
+//function drawInteraction(faces, hands) {
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
-  for (let i = 0; i < hands.length; i++) {
-    let hand = hands[i];
+ // for (let i = 0; i < hands.length; i++) {
+   // let hand = hands[i];
     //console.log(hand);
-    if (showKeypoints) {
-      drawConnections(hand)
-    }
+   // if (showKeypoints) {
+    //  drawConnections(hand)
+   // }
 
     // This is how to load in the x and y of a point on the hand.
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
+    //let indexFingerTipX = hand.index_finger_tip.x;
+   // let indexFingerTipY = hand.index_finger_tip.y;
     let mice = [];
+    let mouseImg;
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -26,8 +26,8 @@ function drawInteraction(hands) {
     /*
     Start drawing on the hands here
     */
-//function prepareInteraction() {
-  //let mouseImg = loadImage('Mouse.png');
+function prepareInteraction() {
+  let mouseImg = loadImage('Mouse.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -40,7 +40,7 @@ function drawInteraction(hands) {
       img: mouseImg
     });
   }
-//}
+}
 
 function drawInteraction(hands) {
   let indexFingerX = 0;
@@ -72,7 +72,7 @@ function drawInteraction(hands) {
 }
 
 function draw() {
-  background(220);
+  
   drawInteraction([], []);
 }
     // drawPoints(hand)
@@ -84,10 +84,10 @@ function draw() {
     /*
     Stop drawing on the hands here
     */
-  }
+  //}
   // You can make addtional elements here, but keep the hand drawing inside the for loop. 
   //------------------------------------------------------
-}
+//}
 
 
 
