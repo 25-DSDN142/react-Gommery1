@@ -35,7 +35,26 @@ function prepareInteraction() {
       speedX: random(1,3),
       speedy: 0,
       visible:true,
-    })
+      respawntime: 0,
+      img: mouseImg
+    });
+  }
+}
+
+function drawInteractions(faces, hands) {
+  let indexFingerX = 0;
+  let indexFingerY = 0;
+
+  if(hands.length > 0) {
+    indexFingerX = hands[0].index_finger_tip.x;
+    indexFingerY = hands[0].index_finger_tip.y;
+  }
+  for(let m of mice) {
+    if(!m.visible && millis() > m.respawnTime){
+      m.visible = true;
+      m.x = random(width);
+      m.y = random(height);
+    }
   }
 }
     // drawPoints(hand)
