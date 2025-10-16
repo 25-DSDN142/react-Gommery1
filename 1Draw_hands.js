@@ -93,7 +93,7 @@ function drawInteraction(faces, hands) {
     }
   }
 //score board
-fill(0, 0, 0, 150);
+fill(130, 21, 32);
 noStroke();
 rect(884, 698, 120, 50);
 fill(255);
@@ -102,7 +102,7 @@ textAlign(LEFT, CENTER);
 text("Score " + score, 884 + 10, 698 + 25);
 
 // title
-fill(0, 0, 0, 200);
+fill(130, 21, 32);
 noStroke();
 rect(20, 20, 200, 60);
 
