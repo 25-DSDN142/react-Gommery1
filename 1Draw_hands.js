@@ -20,6 +20,7 @@
     let mice = [];
     let mouseImg;
     //let catEarsImg;
+    let score = 0;
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -44,7 +45,7 @@ mouseImg = loadImage('Mouse.png');
     });
   }
 }
-
+//WHAT MAKES THE MICE MOVE AND WHAT DESTROYS THEM
 function drawInteraction(faces, hands) {
   let indexFingerX = 0;
   let indexFingerY = 0;
@@ -83,6 +84,7 @@ function drawInteraction(faces, hands) {
     if(d < 100 && m.visible){
       m.visible = false;
       m.respawnTime = millis() + 5000;
+      score++;
     }
 
     if (random(1) < 0.01) {
@@ -90,7 +92,24 @@ function drawInteraction(faces, hands) {
       m.speedY = random(-2, 2);
     }
   }
+//score board
+fill(0, 0, 0, 150);
+noStroke();
+rect(20, 20, 120, 50);
+fill(255);
+textsize(24)
+textAlign(LEFT, CENTER);
+text("Score " + score, 30, 45);
 
+// title
+fill(0, 0, 0, 200);
+noStroke();
+rect(20, 20, 200, 60);
+
+fill(255);
+textSize(24);
+textAlign(CENTER, CENTER);
+text("Rat Killa Game", 20 + 100, 20 + 30);
  //for (let i = 0; i < faces.length; i++) {
   //  let face = faces[i];
  // let faceCenterX = face.faceOval.centerX;
