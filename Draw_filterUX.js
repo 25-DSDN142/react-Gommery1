@@ -1,14 +1,15 @@
 // ----=  HANDS  =----
-let halo;
-let rightHorn;
-let leftHorn;
+let mouseears;
+let catright;
+let catleft;
+let whiskers;
 
-let angel = true;
+let iscat = true;
 
 function prepareInteraction() {
-  halo = loadImage('/Mouse ears.png');
-  rightHorn = loadImage('/CatearRight.png');
-  leftHorn = loadImage('/CatearLeft.png');
+  Mouseears = loadImage('/Mouse ears.png');
+  catright = loadImage('/CatearRight.png');
+  catleft = loadImage('/CatearLeft.png');
 
 }
 
@@ -32,10 +33,10 @@ function drawInteraction(faces, hands) {
 
     let whatGesture = detectHandGesture(hand)
     if (whatGesture == "Thumbs Up") {
-      angel = true;
+      iscat = true;
     }
     if (whatGesture == "Open Palm") {
-      angel = false;
+      iscat = false;
     }
 
     /*
@@ -72,17 +73,17 @@ function drawInteraction(faces, hands) {
     let faceCenterY = face.faceOval.centerY;
 
 
-    let hornWidth = faceWidth / 2;
-    let hornHeight = faceheight;
+    let earWidth = faceWidth / 2;
+    let earHeight = faceheight;
 
-    let hornXOffset = faceWidth * 0.6;
-    let hornYOffset = faceheight;
+    let earXOffset = faceWidth * 0.6;
+    let earYOffset = faceheight;
 
-    if (angel) {
-      image(halo, face.keypoints[103].x, face.keypoints[103].y - 200)
+    if (iscat) {
+      image(mouseears, face.keypoints[103].x, face.keypoints[103].y - 200) //mouseears
     } else {
-      image(rightHorn, faceCenterX - hornXOffset, faceCenterY - hornYOffset, hornWidth, hornHeight) // imageName, x, y, imageWidth, imageHight
-      image(leftHorn, faceCenterX + hornXOffset - leftHorn.width, faceCenterY - hornYOffset, hornWidth, hornHeight) // imageName, x, y, imageWidth, imageHight
+      image(catright, faceCenterX - earXOffset, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
+      image(catleft, faceCenterX + earXOffset - catleft.width, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
 
     }
     /*
