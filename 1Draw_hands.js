@@ -95,11 +95,11 @@ function drawInteraction(faces, hands) {
 //score board
 fill(0, 0, 0, 150);
 noStroke();
-rect(20, 20, 120, 50);
+rect(884, 698, 120, 50);
 fill(255);
-textsize(24)
+textSize(24)
 textAlign(LEFT, CENTER);
-text("Score " + score, 30, 45);
+text("Score " + score, 884 + 10, 698 + 25);
 
 // title
 fill(0, 0, 0, 200);
