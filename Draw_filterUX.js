@@ -1,5 +1,5 @@
 // ----=  HANDS  =----
-let mouseears;
+let Mouseears;
 let catright;
 let catleft;
 let whiskers;
@@ -7,9 +7,9 @@ let whiskers;
 let iscat = true;
 
 function prepareInteraction() {
-  Mouseears = loadImage('/Mouse ears.png');
-  catright = loadImage('/CatearRight.png');
-  catleft = loadImage('/CatearLeft.png');
+  Mouseears = loadImage('Mouse ears.png');
+  catright = loadImage('CatearRight.png');
+  catleft = loadImage('CatearLeft.png');
 
 }
 
@@ -80,10 +80,10 @@ function drawInteraction(faces, hands) {
     let earYOffset = faceheight;
 
     if (iscat) {
-      image(mouseears, face.keypoints[103].x, face.keypoints[103].y - 200) //mouseears
+      image(Mouseears, face.keypoints[103].x, face.keypoints[103].y - 200) //Mouseears
     } else {
       image(catright, faceCenterX - earXOffset, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
-      image(catleft, faceCenterX + earXOffset - catleft.width, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
+      image(catleft, faceCenterX + earXOffset, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
 
     }
     /*
