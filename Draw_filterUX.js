@@ -6,7 +6,7 @@ let whiskers;
 
 let iscat = true;
 
-function prepareInteraction() {
+function preload() {
   Mouseears = loadImage('Mouse ears.png');
   catright = loadImage('CatearRight.png');
   catleft = loadImage('CatearLeft.png');
@@ -66,29 +66,26 @@ function drawInteraction(faces, hands) {
     /*
     Start drawing on the face here
     */
+
+
+   let foreheadX = face.keypoints[10].x;
+let foreheadY = face.keypoints[10].y;
+
+let earYOffset = faceheight / 2;
+let earXOffset = faceWidth / 3;
+let earWidth = faceWidth / 2;
+let earHeight = faceheight / 2;
+
+// debug red dot
 fill(255, 0, 0);
-nostroke();
-circle(face.keypoint[103].x, face.keypoints[103].y - 200, 20);
+noStroke();
+circle(foreheadX, foreheadY, 10);
 
-
-    let faceWidth = face.faceOval.width;
-    let faceheight = face.faceOval.height;
-    let faceCenterX = face.faceOval.centerX;
-    let faceCenterY = face.faceOval.centerY;
-
-
-    let earWidth = faceWidth / 2;
-    let earHeight = faceheight;
-
-    let earXOffset = faceWidth * 0.6;
-    let earYOffset = faceheight;
-
-    if (iscat) {
-      image(Mouseears, face.keypoints[103].x, face.keypoints[103].y - 200) //Mouseears
-    } else {
-      image(catright, faceCenterX - earXOffset, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
-      image(catleft, faceCenterX + earXOffset, faceCenterY - earYOffset, earWidth, earHeight) // imageName, x, y, imageWidth, imageHight
-
+if (iscat) {
+  image(mouseears, foreheadX - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
+} else {
+  image(catright, foreheadX - earXOffset - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
+  image(catleft, foreheadX + earXOffset - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
     }
     /*
     Stop drawing on the face here
