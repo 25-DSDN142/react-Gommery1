@@ -56,17 +56,31 @@ function drawInteraction(hands) {
       m.visible = true;
       m.x = random(width);
       m.y = random(height);
+      m.speedX = random(-2, 2);
+      m.speedY = random(-2, 2);
     }
 
     m.x += m.speedX;
+    m.y += m.speedY;
+
+    if (m.x > width) m.x = 0;
+    if (m.x < 0) m.x = width;
+    if (m.y > height) m.y = 0;
+    if (m.y < 0) m.y = height;
+
 
     if(m.visible){
-      image(m.img, m.x, m.y, 50, 50);
+      image(m.img, m.x, m.y, 100, 210);
     }
-    let d = dist(indexFingerX, indexFingerY, m.x + 25, m.y + 25);
-    if(d < 30 && m.visible){
+    let d = dist(indexFingerX, indexFingerY, m.x + 60, m.y + 125);
+    if(d < 100 && m.visible){
       m.visible = false;
       m.respawnTime = millis() + 5000;
+    }
+
+    if (random(1) < 0.01) {
+      m.speedX = random(-2, 2);
+      m.speedY = random(-2, 2);
     }
   }
 }
