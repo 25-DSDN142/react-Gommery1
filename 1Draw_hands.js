@@ -26,6 +26,7 @@
     /*
     Start drawing on the hands here
     */
+   
 function prepareInteraction() {
 mouseImg = loadImage('Mouse.png');
 
@@ -42,13 +43,17 @@ mouseImg = loadImage('Mouse.png');
   }
 }
 
-function drawInteraction(hands) {
+function drawInteraction(faces, hands) {
   let indexFingerX = 0;
   let indexFingerY = 0;
 
   if(hands.length > 0) {
     indexFingerX = hands[0].index_finger_tip.x;
     indexFingerY = hands[0].index_finger_tip.y;
+    fill(255, 0, 0);
+  noStroke();
+  circle(indexFingerX, indexFingerY, 20);
+
   }
 
   for(let m of mice) {
