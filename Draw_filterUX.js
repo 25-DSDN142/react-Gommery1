@@ -66,6 +66,10 @@ function drawInteraction(faces, hands) {
     /*
     Start drawing on the face here
     */
+fill(255, 0, 0);
+nostroke();
+circle(face.keypoint[103].x, face.keypoints[103].y - 200, 20);
+
 
     let faceWidth = face.faceOval.width;
     let faceheight = face.faceOval.height;
