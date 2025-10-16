@@ -19,6 +19,7 @@
    // let indexFingerTipY = hand.index_finger_tip.y;
     let mice = [];
     let mouseImg;
+    let catEarsImg;
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -29,6 +30,7 @@
    
 function prepareInteraction() {
 mouseImg = loadImage('Mouse.png');
+catEarsImg - loadImage('CatEars.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -88,6 +90,10 @@ function drawInteraction(faces, hands) {
       m.speedY = random(-2, 2);
     }
   }
+
+  
+
+
 }
     // drawPoints(hand)
 
