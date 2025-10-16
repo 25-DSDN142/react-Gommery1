@@ -27,7 +27,7 @@
     Start drawing on the hands here
     */
 function prepareInteraction() {
-  let mouseImg = loadImage('Mouse.png');
+mouseImg = loadImage('Mouse.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -50,12 +50,14 @@ function drawInteraction(hands) {
     indexFingerX = hands[0].index_finger_tip.x;
     indexFingerY = hands[0].index_finger_tip.y;
   }
+
   for(let m of mice) {
     if(!m.visible && millis() > m.respawnTime){
       m.visible = true;
       m.x = random(width);
       m.y = random(height);
     }
+
     m.x += m.speedX;
 
     if(m.visible){
@@ -67,13 +69,6 @@ function drawInteraction(hands) {
       m.respawnTime = millis() + 5000;
     }
   }
-  fill(255, 255, 0);
-  ellipse(indexFingerX, indexFingerY, 30, 30);
-}
-
-function draw() {
-  
-  drawInteraction([], []);
 }
     // drawPoints(hand)
 
