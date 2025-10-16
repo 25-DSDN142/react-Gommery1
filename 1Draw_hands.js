@@ -1,10 +1,11 @@
 // ----=  HANDS  =----
 /* load images here */
 function prepareInteraction() {
+  let mouseImg = loadImage('Mouse.png');
   //bgImage = loadImage('/images/background.png');
 }
 
-function drawInteraction(faces, hands) {
+function drawInteraction(hands) {
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
   for (let i = 0; i < hands.length; i++) {
@@ -17,7 +18,7 @@ function drawInteraction(faces, hands) {
     // This is how to load in the x and y of a point on the hand.
     let indexFingerTipX = hand.index_finger_tip.x;
     let indexFingerTipY = hand.index_finger_tip.y;
-    let mice
+    let mice = [];
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -25,23 +26,23 @@ function drawInteraction(faces, hands) {
     /*
     Start drawing on the hands here
     */
-function prepareInteraction() {
-  let mouseImg = loadImage('Mouse.png');
+//function prepareInteraction() {
+  //let mouseImg = loadImage('Mouse.png');
 
-  for(let 1=0; i<3; i++){
+  for (let i = 0; i < 3; i++){
     mice.push({
-      x: random(width)
-      y: random(height)
+      x: random(width),
+      y: random(height),
       speedX: random(1,3),
-      speedy: 0,
+      speedY: 0,
       visible:true,
-      respawntime: 0,
+      respawnTime: 0,
       img: mouseImg
     });
   }
-}
+//}
 
-function drawInteractions(faces, hands) {
+function drawInteraction(hands) {
   let indexFingerX = 0;
   let indexFingerY = 0;
 
@@ -55,7 +56,24 @@ function drawInteractions(faces, hands) {
       m.x = random(width);
       m.y = random(height);
     }
+    m.x += m.speedX;
+
+    if(m.visible){
+      image(m.img, m.x, m.y, 50, 50);
+    }
+    let d = dist(indexFingerX, indexFingerY, m.x + 25, m.y + 25);
+    if(d < 30 && m.visible){
+      m.visible = false;
+      m.respawnTime = millis() + 5000;
+    }
   }
+  fill(255, 255, 0);
+  ellipse(indexFingerX, indexFingerY, 30, 30);
+}
+
+function draw() {
+  background(220);
+  drawInteraction([], []);
 }
     // drawPoints(hand)
 
