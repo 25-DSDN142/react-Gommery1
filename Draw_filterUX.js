@@ -1,4 +1,3 @@
-// ----=  HANDS  =----
 let Mouseears;
 let catright;
 let catleft;
@@ -10,96 +9,58 @@ function preload() {
   Mouseears = loadImage('Mouse ears.png');
   catright = loadImage('CatearRight.png');
   catleft = loadImage('CatearLeft.png');
-
 }
 
 function drawInteraction(faces, hands) {
-
   // hands part
-  // USING THE GESTURE DETECTORS (check their values in the debug menu)
-  // detectHandGesture(hand) returns "Pinch", "Peace", "Thumbs Up", "Pointing", "Open Palm", or "Fist"
-
-  // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
   for (let i = 0; i < hands.length; i++) {
     let hand = hands[i];
     if (showKeypoints) {
       drawPoints(hand)
       drawConnections(hand)
     }
-    // console.log(hand);
-    /*
-    Start drawing on the hands here
-    */
 
-    let whatGesture = detectHandGesture(hand)
-    if (whatGesture == "Thumbs Up") {
-      iscat = true;
+    let whatGesture = detectHandGesture(hand);
+    if (whatGesture) {
+      if (whatGesture == "Thumbs Up") iscat = true;
+      else if (whatGesture == "Open Palm") iscat = false;
     }
-    if (whatGesture == "Open Palm") {
-      iscat = false;
-    }
-
-    /*
-    Stop drawing on the hands here
-    */
   }
 
   //------------------------------------------------------------
-  //facePart
-  // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
+  // face part
   for (let i = 0; i < faces.length; i++) {
-    let face = faces[i]; // face holds all the keypoints of the face
-    if (showKeypoints) {
-      drawPoints(face)
+    let face = faces[i];
+    if (showKeypoints) drawPoints(face);
+
+    let faceWidth = face.faceOval.width;
+    let faceHeight = face.faceOval.height;
+    let faceCenterX = face.faceOval.centerX;
+    let faceCenterY = face.faceOval.centerY;
+
+    let earWidth = faceWidth / 1.5;
+    let earHeight = faceHeight;
+    let earXOffset = faceWidth * 0.6;
+    let earYOffset = faceHeight;
+
+    // Debug ellipse to check positions
+    fill(255, 0, 0);
+    ellipse(faceCenterX, faceCenterY - earYOffset, 50, 50);
+
+    if (iscat) {
+      // Cat ears
+      image(catright, faceCenterX - earXOffset, faceCenterY - earYOffset, earWidth, earHeight);
+      image(catleft, faceCenterX + earXOffset, faceCenterY - earYOffset, earWidth, earHeight);
+    } else {
+      // Mouse ears
+      image(Mouseears, faceCenterX - earWidth / 2, faceCenterY - earYOffset, earWidth, earHeight);
     }
-    // console.log(face);
-    /*
-    Once this program has a face, it knows some things about it.
-    This includes how to draw a box around the face, and an oval. 
-    It also knows where the key points of the following parts are:
-     face.leftEye
-     face.leftEyebrow
-     face.lips
-     face.rightEye
-     face.rightEyebrow
-    */
-    /*
-    Start drawing on the face here
-    */
-
-
-   let foreheadX = face.keypoints[10].x;
-let foreheadY = face.keypoints[10].y;
-
-let earYOffset = faceheight / 2;
-let earXOffset = faceWidth / 3;
-let earWidth = faceWidth / 2;
-let earHeight = faceheight / 2;
-
-// debug red dot
-fill(255, 0, 0);
-noStroke();
-circle(foreheadX, foreheadY, 10);
-
-if (iscat) {
-  image(mouseears, foreheadX - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
-} else {
-  image(catright, foreheadX - earXOffset - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
-  image(catleft, foreheadX + earXOffset - earWidth/2, foreheadY - earYOffset, earWidth, earHeight);
-    }
-    /*
-    Stop drawing on the face here
-    */
-
   }
-  //------------------------------------------------------
-  // You can make addtional elements here, but keep the face drawing inside the for loop. 
 }
 
-
+// ----- helper functions -----
 function drawConnections(hand) {
-  // Draw the skeletal connections
-  push()
+  push();
   for (let j = 0; j < connections.length; j++) {
     let pointAIndex = connections[j][0];
     let pointBIndex = connections[j][1];
@@ -109,19 +70,27 @@ function drawConnections(hand) {
     strokeWeight(2);
     line(pointA.x, pointA.y, pointB.x, pointB.y);
   }
-  pop()
+  pop();
 }
 
-// This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
 function drawPoints(feature) {
-
-  push()
+  push();
   for (let i = 0; i < feature.keypoints.length; i++) {
     let element = feature.keypoints[i];
     noStroke();
     fill(0, 255, 0);
     circle(element.x, element.y, 5);
   }
-  pop()
+  pop();
+}
 
+// ----- ADD THIS -----
+function draw() {
+  background(220); // clear canvas each frame
+  // For now, pass empty arrays so we can see the canvas is working
+  drawInteraction([], []);
+
+  // Test ellipse to make sure draw() is running
+  fill(0, 0, 255);
+  ellipse(100, 100, 50, 50);
 }
