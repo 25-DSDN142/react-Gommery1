@@ -21,7 +21,7 @@
     let mouseImg;
     //let catEarsImg;
     let score = 0;
-    let pawcat
+    let pawImg
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
@@ -33,7 +33,7 @@
 function prepareInteraction() {
 mouseImg = loadImage('Mouse.png');
 //catEarsImg = loadImage('CatEars.png');
-pawcat = loadImage('catpaw.png');
+pawImg = loadImage('catpaw.png');
 
   for (let i = 0; i < 3; i++){
     mice.push({
@@ -61,10 +61,11 @@ function drawInteraction(faces, hands) {
   noStroke();
   circle(indexFingerX, indexFingerY, 20);
 
+  // Cat paw finger 
   let pawWidth = 80;
   let pawHeight = 80;
 
-  image(catpaw, indexFingerX - p)
+  image(pawImg, indexFingerX - pawWidth/2, indexFingerY -pawHeight/2, pawWidth, pawHeight);
 
   }
 // Random spawn
